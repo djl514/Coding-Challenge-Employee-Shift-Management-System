@@ -8,28 +8,31 @@ const employees = [
 
 //2. Create a function to Display Employee Shift Details
 function displayEmployeeShifts(employee){
-    return employee;
+    console.log(employee);
 }
 
-console.log(displayEmployeeShifts(employees[1]));
+displayEmployeeShifts(employees[1]);
+
 
 //3. Create a Function to assign a new shift
 function assignShift(employeeName, days, numHours){
-    let empName = employees.find(worker => worker.name == employeeName)
-    let shiftArray = empName.shifts;
-    shiftArray.forEach(shift => {
-        if (shift.day === days){
-            return `${empName} is already assigned a shift for ${days}`;
-        } else if (shiftArray.day != days){
-            shiftArray.push(
-                { day: days, hours: numHours}
-            );
-    
-        }
-    });
+    let empName = employees.find(worker => worker.name == employeeName);
+    if (!empName) {
+        return `Error: ${employeeName} not found.`
+    }
+    const shiftArray = empName.shifts.some(shift => shift.day == days);
+    if (!shiftArray) {
+        empName.shifts.push({ day: days, hours: numHours });
+    } else {
+        return `${employeeName} already scheduled on ${days}`;
+    }
+    return `${employeeName} successfully schedule on ${days} for ${numHours} hours.` 
 
 }
 
 
-console.log(assignShift('John', 'Monday', 3));
+console.log(assignShift('John', 'Tuesday', 3));
 console.log(employees);
+
+//4. Create a function to calculate total hours worked
+
