@@ -26,7 +26,7 @@ function assignShift(employeeName, days, numHours){
     } else {
         return `${employeeName} already scheduled on ${days}`;
     }
-    return `${employeeName} successfully schedule on ${days} for ${numHours} hours.` 
+    return `${employeeName} successfully scheduled on ${days} for ${numHours} hours.` 
 
 }
 
@@ -45,4 +45,17 @@ function calculateTotalHours(employeeName){
 
 console.log(calculateTotalHours('John'));
 
-//5. 
+//5. Create a function to list employees with free days
+function listAvailableEmployees(days){
+    employees.forEach(employee => {
+        let workDay = employee.shifts.some(shift => shift.day == days)
+        if (!workDay){
+            console.log(`${employee.name} doesn't work on ${days}`);
+        } else {
+            return;
+        }
+
+    });
+}
+
+listAvailableEmployees('Tuesday');
