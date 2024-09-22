@@ -8,10 +8,10 @@ const employees = [
 
 //2. Create a function to Display Employee Shift Details
 function displayEmployeeShifts(employee){
-    console.log(employee);
+    return employee;
 }
 
-displayEmployeeShifts(employees[1]);
+console.log(displayEmployeeShifts(employees[1]));
 
 
 //3. Create a Function to assign a new shift
@@ -58,4 +58,4 @@ function listAvailableEmployees(days){
     });
 }
 
-listAvailableEmployees('Tuesday');
+listAvailableEmployees('Wednesday');
