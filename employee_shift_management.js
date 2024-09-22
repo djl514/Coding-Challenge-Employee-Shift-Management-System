@@ -35,4 +35,14 @@ console.log(assignShift('John', 'Tuesday', 3));
 console.log(employees);
 
 //4. Create a function to calculate total hours worked
+function calculateTotalHours(employeeName){
+    let empName = employees.find(worker => worker.name == employeeName);
+    let totalHours = empName.shifts.reduce((total, hours) => {
+        return total + hours.hours
+    },0);
+    return `${employeeName} works for ${totalHours} total hours`
+}
 
+console.log(calculateTotalHours('John'));
+
+//5. 
